@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  name: Adelaide
+  slug: adelaide
+  series: one
+
+two:
+  id: 2
+  name: Alice
+  slug: alice
+  series: one

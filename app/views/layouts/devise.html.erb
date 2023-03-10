@@ -1,0 +1,12 @@
+<main class="bg-zinc-800 flex flex-col h-full w-full text-white">
+  <div class="flex flex-col items-center justify-center my-8">
+    <%= image_tag("final_girl_logo", class: "w-60") %>
+    <p class="text-zinc-100 text-xl uppercase">Achievement Tracker</p>
+  </div>
+  <div class="bg-zinc-900 rounded-t-3xl px-8 py-4 flex flex-col flex-1 items-center w-full">
+    <h2 class="font-display text-4xl text-zinc-100"><%= yield :title %></h2>
+    <div class="w-96 mt-4">
+      <%= render template: 'layouts/application' %>
+    </div>
+  </div>
+</main>

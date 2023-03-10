@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  killer: one
+  description: Defeat Hans at Camp Happy Trails.
+  has_locations: false
+
+two:
+  killer: one
+  description: Defeat Hans at...
+  has_locations: true

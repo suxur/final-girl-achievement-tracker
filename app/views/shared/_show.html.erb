@@ -1,0 +1,26 @@
+<div class="flex justify-center items-center">
+  <div class="w-1/2 text-zinc-50 relative">
+    <%= render IconComponent.new(facade.icon_path, class: "-top-8 right-8") %>
+    <% if facade.has_logo? %>
+      <%= image_tag(facade.logo_path, class: "max-w-72 max-h-12 mb-4") %>
+    <% end %>
+    <%= form_for current_user do |form| %>
+      <%= form.fields_for facade.fields_for_type, facade.current_achievements do |ka_form| %>
+        <%= tag.label class:"block ml-7 cursor-pointer mb-2" do %>
+          <%= ka_form.check_box :completed, class: "-ml-7 mr-2 rounded" %>
+          <%= ka_form.object.send(facade.achievement_type).description %>
+          <% if ka_form.object.send(facade.achievement_type).send(facade.has_method) %>
+            <%= ka_form.select facade.chooseable_id, facade.chooseables, { prompt: facade.chooseable_prompt }, class: "bg-transparent text-white rounded-md border-zinc-800 focus:ring-primary focus:border-transparent py-1" %>
+          <% else %>
+            <%= ka_form.hidden_field facade.chooseable_id %>
+          <% end %>
+        <% end %>
+        <%= ka_form.hidden_field facade.achievement_type_id %>
+      <% end %>
+      <div class="mt-12 flex flex-row justify-end">
+        <%= link_to "Back", root_path, class: "button bg-transparent hover:bg-zinc-800 mr-2" %>
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>

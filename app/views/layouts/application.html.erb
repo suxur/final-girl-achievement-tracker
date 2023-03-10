@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html class="h-full">
+  <head>
+    <title>Final Girl – Achievement Tracker</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Golos+Text:wght@400;700&display=swap" rel="stylesheet"> 
+
+
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <script src="https://kit.fontawesome.com/2f76fad117.js" crossorigin="anonymous"></script>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="h-full bg-zinc-900 relative">
+    <% flash.each do |type, message| %>
+      <%= render AlertComponent.new(message) %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

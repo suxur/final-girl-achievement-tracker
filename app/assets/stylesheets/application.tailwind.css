@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  [type="text"],
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [type="checkbox"],
+  [multiple],
+  textarea,
+  select {
+    @apply text-primary focus:ring-primary
+  }
+}
+
+@layer components {
+  .button {
+    @apply justify-center inline-flex items-center px-4 py-2 border rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 focus:outline-none disabled:opacity-25 cursor-pointer bg-primary text-white border-transparent hover:bg-red-600 active:bg-red-600
+  }
+}
+
+

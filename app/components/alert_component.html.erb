@@ -1,0 +1,6 @@
+<%= tag.div data: js_data, class: "absolute top-16 right-4 bg-primary p-4 rounded-lg text-white shadow-lg shadow-black flex flex-row justify-center transition transform ease-in-out duration-1000 opacity-0" do %>
+  <%= @message %>
+  <button type="button" class="ml-2 text-xl text-red-300" data-action="alert#close">
+    <i class="fa-solid fa-circle-xmark"></i>
+  </button>
+<% end %>

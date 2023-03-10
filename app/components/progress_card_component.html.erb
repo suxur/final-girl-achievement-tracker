@@ -1,0 +1,14 @@
+<div class="relative bg-zinc-50 p-6 rounded-3xl group text-zinc-900">
+  <%= render IconComponent.new(@icon, class: "-top-5 right-5") %>
+  <p class="text-xl font-semibold mb-2"><%= @title %></p>
+  <div class="border-t-2"></div>
+  <div class="my-2 flex justify-between">
+    <p class="font-semibold text-base flex-1">Progress</p>
+    <p class="text-base text-zinc-400 font-semibold flex-1 text-right">
+      <%= @progress %>%
+    </p>
+  </div>
+  <div class="overflow-hidden h-4 text-xs flex rounded bg-zinc-200">
+    <div style="width: <%= @progress %>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary"></div>
+  </div>
+</div>

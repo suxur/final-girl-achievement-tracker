@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Camp Happy Trails
+  slug: camp_happy_trails
+  series: one
+
+two:
+  name: Maple Lane
+  slug: maple_lane
+  series: one
