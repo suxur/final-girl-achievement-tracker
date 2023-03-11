@@ -63,12 +63,17 @@ class Location::ShowFacade < ShowFacade
   end
 
   def current_location_achievements
-    @user.user_location_achievements.where(location_achievement_id: achievements)
+    @user
+      .user_location_achievements
+      .where(location_achievement_id: achievements)
+      .order(:location_achievement_id)
   end
 
   def built_achievements
     achievements.map do |achievement|
-      @user.user_location_achievements.build(location_achievement_id: achievement.id)
+      @user.user_location_achievements.build(
+        location_achievement_id: achievement.id,
+      )
     end
   end
 end

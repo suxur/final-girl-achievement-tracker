@@ -39,3 +39,6 @@
 
 .DS_Store
 .nvimrc
+.rbenv-vars
+sbin/
+shared/

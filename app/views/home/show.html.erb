@@ -18,7 +18,6 @@
       <%= link_to(location) do %>
         <%= render ProgressCardComponent.new(
           title: location.name,
-          progress: location.percentage(current_user.location_achievements),
           progress: ((current_user.user_location_achievements.completed(location.achievements).count.to_f / location.achievements.count.to_f) * 100).round.to_i,
           icon: location.icon
         ) %>

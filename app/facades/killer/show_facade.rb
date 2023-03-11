@@ -59,12 +59,17 @@ class Killer::ShowFacade < ShowFacade
   end
 
   def current_killer_achievements
-    @user.user_killer_achievements.where(killer_achievement_id: achievements)
+    @user
+      .user_killer_achievements
+      .where(killer_achievement_id: achievements)
+      .order(:killer_achievement_id)
   end
 
   def built_achievements
     achievements.map do |achievement|
-      @user.user_killer_achievements.build(killer_achievement_id: achievement.id)
+      @user.user_killer_achievements.build(
+        killer_achievement_id: achievement.id,
+      )
     end
   end
 end

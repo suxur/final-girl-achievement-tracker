@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :killers, param: :slug, only: %i[show]
   resources :users
   resource :home, only: :show, controller: "home"
+  resource :privacy_policy, only: :show, controller: "privacy_policy"
 end
