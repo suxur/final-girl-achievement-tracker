@@ -10,7 +10,7 @@
           <%= ka_form.check_box :completed, class: "-ml-7 mr-2 rounded" %>
           <%= ka_form.object.send(facade.achievement_type).description %>
           <% if ka_form.object.send(facade.achievement_type).send(facade.has_method) %>
-            <%= ka_form.select facade.chooseable_id, facade.chooseables, { prompt: facade.chooseable_prompt }, class: "bg-transparent text-white rounded-md border-zinc-800 focus:ring-primary focus:border-transparent py-1" %>
+            <%= ka_form.select facade.chooseable_id, facade.chooseables, { prompt: facade.chooseable_prompt }, class: "bg-zinc-900 text-white rounded-md border-zinc-800 focus:ring-primary focus:border-transparent py-1" %>
           <% else %>
             <%= ka_form.hidden_field facade.chooseable_id %>
           <% end %>
