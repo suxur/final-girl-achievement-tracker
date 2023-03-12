@@ -64,13 +64,13 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = {
-    host: "http://final-girl.jpayne.com",
+    host: "https://final-girl.jlpayne.com",
   }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "smtp.sendgrid.net",
     port: 587,
-    domain: "gmail.com",
+    domain: "final-girl.jlpayne.com",
     user_name: ENV["ACTION_MAILER_USERNAME"],
     password: ENV["ACTION_MAILER_PASSWORD"],
     authentication: :plain,
@@ -78,7 +78,7 @@ Rails.application.configure do
   }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = { from: ENV["ACTION_MAILER_USERNAME"] }
+  config.action_mailer.default_options = { from: "finalgirlachievementtracker.com"] }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
