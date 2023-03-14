@@ -1,18 +1,24 @@
 <div class="flex justify-center items-center">
-  <div class="w-1/2 text-zinc-50 relative flex flex-col items-center">
-    <%= render IconComponent.new(facade.icon_path, class: "-top-8 right-8") %>
+  <div class="text-zinc-50 relative flex flex-col items-center">
     <% if facade.has_logo? %>
-      <%= image_tag(facade.logo_path, class: "max-w-72 max-h-12 mb-4") %>
+      <%= image_tag(facade.logo_path, alt: facade.title, class: "max-w-72 max-h-12 mb-4") %>
+    <% else %>
+      <h1 class="text-4xl font-bold mb-4"><%= facade.title %></h1>
     <% end %>
     <%= form_for current_user do |form| %>
       <%= form.fields_for facade.fields_for_type, facade.current_achievements do |ka_form| %>
-        <div class="flex flex-row items-center ml-7 mb-2">
+        <div class="flex flex-col md:items-center md:flex-row ml-7 mb-4">
           <%= tag.label class:"block ml-7 cursor-pointer" do %>
             <%= ka_form.check_box :completed, class: "-ml-7 mr-2 rounded" %>
             <%= ka_form.object.send(facade.achievement_type).description %>
           <% end %>
           <% if ka_form.object.send(facade.achievement_type).send(facade.has_method) %>
-            <%= ka_form.select facade.chooseable_id, facade.chooseables, { prompt: facade.chooseable_prompt }, class: "bg-zinc-900 text-white rounded-md border-zinc-800 focus:ring-primary focus:border-transparent py-1" %>
+            <%= ka_form.select(
+              facade.chooseable_id,
+              facade.chooseables,
+              { prompt: facade.chooseable_prompt },
+              class: "ml-7 mt-1 md:m-0 bg-zinc-900 text-white rounded-md border-zinc-800 focus:ring-primary focus:border-transparent py-1"
+            ) %>
           <% else %>
             <%= ka_form.hidden_field facade.chooseable_id %>
           <% end %>

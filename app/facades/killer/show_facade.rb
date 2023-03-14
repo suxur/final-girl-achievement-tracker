@@ -1,22 +1,6 @@
 class Killer::ShowFacade < ShowFacade
-  def icon_path
-    killer.icon
-  end
-
-  def logo_path
-    killer.logo
-  end
-
-  def has_logo?
-    killer.logo.attached?
-  end
-
   def fields_for_type
     :user_killer_achievements
-  end
-
-  def achievements
-    killer.achievements
   end
 
   def achievement_type
@@ -50,9 +34,10 @@ class Killer::ShowFacade < ShowFacade
 
   private
 
-  def killer
+  def record
     @killer ||= Killer.find_by(slug: @params[:slug])
   end
+  alias_method :killer, :record
 
   def has_current_killer_achievements?
     current_killer_achievements.any?

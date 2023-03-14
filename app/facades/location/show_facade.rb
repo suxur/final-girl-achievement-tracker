@@ -1,22 +1,6 @@
 class Location::ShowFacade < ShowFacade
-  def icon_path
-    location.icon
-  end
-
-  def logo_path
-    location.logo
-  end
-
-  def has_logo?
-    location.logo.attached?
-  end
-
   def fields_for_type
     :user_location_achievements
-  end
-
-  def achievements
-    location.achievements
   end
 
   def achievement_type
@@ -54,9 +38,10 @@ class Location::ShowFacade < ShowFacade
 
   private
 
-  def location
-    @location ||= Location.find_by(slug: @params[:slug])
+  def record
+    @record ||= Location.find_by(slug: @params[:slug])
   end
+  alias_method :location, :record
 
   def has_current_location_achievements?
     current_location_achievements.any?
