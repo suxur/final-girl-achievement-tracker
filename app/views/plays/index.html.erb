@@ -1,0 +1,22 @@
+<div class="container mx-auto lg:w-1/2">
+  <%= render MenuComponent.new active: plays_path %>
+  <div class="text-zinc-50 flex flex-row justify-between items-center mb-4">
+    <h1 class="font-display text-3xl">Play Log</h1>
+    <%= link_to 'Add Play', new_play_path, class: "button" %>
+  </div>
+    <table class="table-auto min-w-full text-white">
+      <thead>
+        <tr>
+          <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Date</th>
+          <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Final Girl</th>
+          <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Killer</th>
+          <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Location</th>
+          <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Won?</th>
+          <th class="text-center py-3 px-4 uppercase font-semibold text-sm"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @plays %>
+      </tbody>
+    </table>
+</div>

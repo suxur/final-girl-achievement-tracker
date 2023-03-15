@@ -42,3 +42,4 @@
 .rbenv-vars
 sbin/
 shared/
+!/app/views/shared

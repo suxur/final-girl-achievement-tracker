@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
 
   def layout_by_resource
     return "devise" if devise_controller?
-    "authenticated"
+    "application"
   end
 end

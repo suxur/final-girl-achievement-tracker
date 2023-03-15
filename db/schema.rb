@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_03_011727) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_14_014826) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -87,6 +87,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_03_011727) do
     t.index ["series_id"], name: "index_locations_on_series_id"
   end
 
+  create_table "plays", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "final_girl_id", null: false
+    t.bigint "killer_id", null: false
+    t.bigint "location_id", null: false
+    t.boolean "is_win", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["final_girl_id"], name: "index_plays_on_final_girl_id"
+    t.index ["killer_id"], name: "index_plays_on_killer_id"
+    t.index ["location_id"], name: "index_plays_on_location_id"
+    t.index ["user_id"], name: "index_plays_on_user_id"
+  end
+
   create_table "series", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -136,6 +150,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_03_011727) do
   add_foreign_key "killers", "series"
   add_foreign_key "location_achievements", "locations"
   add_foreign_key "locations", "series"
+  add_foreign_key "plays", "final_girls"
+  add_foreign_key "plays", "killers"
+  add_foreign_key "plays", "locations"
+  add_foreign_key "plays", "users"
   add_foreign_key "user_killer_achievements", "killer_achievements"
   add_foreign_key "user_killer_achievements", "locations"
   add_foreign_key "user_killer_achievements", "users"

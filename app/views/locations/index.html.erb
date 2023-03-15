@@ -1,8 +1,5 @@
 <div class="container mx-auto">
-  <div class="flex flex-row">
-    <%= link_to "Killers", killers_path, class: "font-display text-zinc-600 text-4xl mr-4" %>
-    <%= link_to "Locations", locations_path, class: "font-display text-primary text-4xl mr-4" %>
-  </div>
+  <%= render MenuComponent.new active: locations_path %>
   <div class="divide-y divide-solid divide-zinc-600">
     <% @locations.each do |series, locations| %>
       <div class="flex flex-col py-8">

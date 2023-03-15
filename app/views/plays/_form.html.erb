@@ -1,0 +1,36 @@
+<%= form_with(model: play, class: "contents") do |form| %>
+  <% if play.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(play.errors.count, "error") %> prohibited this play from being saved:</h2>
+      <ul>
+        <% play.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="flex flex-col">
+    <div class="mb-4">
+      <%= form.label :final_girl_id, "Final Girl" %>
+      <%= form.collection_select :final_girl_id, FinalGirl.all, :id, :name, { prompt: "Select a Final Girl" }, class: "w-full mt-1", required: true  %>
+    </div>
+    <div class="mb-4">
+      <%= form.label :killer_id, class: "mb-2" %>
+      <%= form.collection_select :killer_id, Killer.all, :id, :name, { prompt: "Select a Killer" }, class: "w-full mt-1", required: true  %>
+    </div>
+    <div class="mb-4">
+      <%= form.label :location_id, class: "mb-2" %>
+      <%= form.collection_select :location_id, Location.all, :id, :name, { prompt: "Select a Location" }, class: "w-full mt-1", required: true  %>
+    </div>
+    <div class="mb-4">
+      <%= form.label :is_win, "Won?", class: "flex items-center" do %>
+        <%= form.check_box :is_win, class: "mr-2 rounded" %>
+        Won?
+      <% end %>
+    </div>
+  </div>
+  <div class="mt-12 flex flex-row justify-end">
+    <%= link_to "Back", plays_path, class: "button bg-transparent hover:bg-zinc-800 mr-2" %>
+    <%= form.submit "Log Play" %>
+  </div>
+<% end %>

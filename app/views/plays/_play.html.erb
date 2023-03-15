@@ -1,0 +1,45 @@
+<tr id="<%= dom_id play %>" class="odd:bg-zinc-600 even:bg-zinc-700 text-zinc-50">
+  <td class="text-left py-3 px-4">
+    <div class="flex flex-col">
+      <span><%= play.created_at.to_s(:long) %></span>
+      <span class="text-sm text-zinc-400"><%= time_ago_in_words play.created_at %> ago</span>
+    </div>
+  </td>
+  <td class="text-left py-3 px-4"><%= play.final_girl.name %></td>
+  <td class="text-left py-3 px-4">
+    <div class="flex flex-row items-center">
+      <%= play.killer.name %>
+      <% if play.killer.icon.attached? %>
+        <div class="ml-2 w-7 h-7">
+          <%= image_tag rails_blob_path(play.killer.icon), class: "h-7" %>
+        </div>
+      <% end %>
+    </div>
+  </td>
+  <td class="text-left py-3 px-4">
+    <div class="flex flex-row items-center">
+      <%= play.location.name %>
+      <% if play.location.icon.attached? %>
+        <div class="ml-2 w-7 h-7">
+          <%= image_tag rails_blob_path(play.location.icon), class: "h-7" %>
+        </div>
+      <% end %>
+    </div>
+  </td>
+  <td class="py-3 px-4">
+    <div class="flex justify-center items-center">
+      <% if play.is_win %>
+        <%= image_tag asset_path('recover-health.png'), class: "h-7" %>
+      <% else %>
+        <%= image_tag asset_path('lose-health.png'), class: "h-7" %>
+      <% end %>
+    </div>
+  </td>
+  <td class="py-3 px-4">
+    <div class="flex justify-center items-center">
+      <%= button_to play_path(play), method: :delete, class: "button h-7 w-7" do %>
+        <i class="fa-solid fa-trash-can"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>

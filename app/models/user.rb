@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :rememberable,
          :validatable
 
+  has_many :plays
+
   has_many :user_killer_achievements
   has_many :killer_achievements, through: :user_killer_achievements
 

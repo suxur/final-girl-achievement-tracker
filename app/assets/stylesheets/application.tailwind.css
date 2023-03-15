@@ -21,6 +21,10 @@
   select {
     @apply text-primary focus:ring-primary
   }
+
+  select {
+    @apply ml-7 mt-1 md:m-0 bg-zinc-900 text-white rounded-md border-zinc-800 focus:ring-primary focus:border-transparent py-1
+  }
 }
 
 @layer components {
