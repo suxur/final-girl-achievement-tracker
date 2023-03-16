@@ -4,15 +4,17 @@ class Location::IndexFacade < IndexFacade
   end
 
   def locations
-    Location.all.map do |location|
-      ProgressCardData.new(
-        location,
-        location.series.name,
-        location.name,
-        calculate_progress(location),
-        location.icon,
-      )
-    end
+    Location
+      .order(:id)
+      .map do |location|
+        ProgressCardData.new(
+          location,
+          location.series.name,
+          location.name,
+          calculate_progress(location),
+          location.icon,
+        )
+      end
   end
 
   def calculate_progress(location)

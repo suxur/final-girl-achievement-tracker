@@ -4,15 +4,17 @@ class Killer::IndexFacade < IndexFacade
   end
 
   def killers
-    Killer.all.map do |killer|
-      ProgressCardData.new(
-        killer,
-        killer.series.name,
-        killer.name,
-        calculate_progress(killer),
-        killer.icon,
-      )
-    end
+    Killer
+      .order(:id)
+      .map do |killer|
+        ProgressCardData.new(
+          killer,
+          killer.series.name,
+          killer.name,
+          calculate_progress(killer),
+          killer.icon,
+        )
+      end
   end
 
   def calculate_progress(killer)
