@@ -1,0 +1,7 @@
+<%= link_to(progress_card.record) do %>
+  <%= render ProgressCardComponent.new(
+    title: progress_card.name,
+    progress: progress_card.progress,
+    icon: progress_card.icon
+  ) %>
+<% end %>

@@ -25,24 +25,28 @@
     <main class="bg-zinc-800 flex flex-col h-full w-full">
       <% if user_signed_in? %>
         <%= button_to(
-          "Log Out",
           destroy_user_session_path,
           class: "button absolute right-4 top-4",
           method: :delete
-        ) %>
+        ) do %>
+          <span class="hidden mr-2 sm:inline">Log Out</span> 
+          <i class="fas fa-sign-out-alt"></i>
+        <% end %>
       <% end %>
-      <div class="flex flex-col items-center justify-center my-8">
+      <div class="flex flex-col items-center justify-center mb-4 mt-8 sm:mb-8">
         <%= link_to root_path do %>
           <%= image_tag("final_girl_logo.png", class: "w-60") %>
           <p class="text-zinc-100 text-xl uppercase">Achievement Tracker</p>
         <% end %>
       </div>
-      <div class="bg-zinc-900 rounded-t-3xl px-8 py-4 flex flex-col flex-1 w-full mt-4">
-        <%= content_for?(:content) ? yield(:content) : yield %>
-        <footer class="mt-20 text-center text-zinc-50 px-32">
-          <p>Site is not affiliated or endorsed by Van Ryder Games. The Final Girl boardgame logo is a trademark of Van Ryder Games and is used with permission.</p>
-          <%= link_to "Privacy Policy", privacy_policy_path, class: "text-primary"  %>
-        </footer>
+      <div class="bg-zinc-900 flex flex-1 rounded-t-3xl p-4 w-full sm:px-8">
+        <div class="container mx-auto flex flex-col flex-1 items-center">
+          <%= content_for?(:content) ? yield(:content) : yield %>
+          <footer class="mt-20 text-center text-zinc-50">
+            <p class="mb-2">Site is not affiliated or endorsed by Van Ryder Games. The Final Girl boardgame logo is a trademark of Van Ryder Games and is used with permission.</p>
+            <%= link_to "Privacy Policy", privacy_policy_path, class: "text-primary"  %>
+          </footer>
+        </div>
       </div>
     </main>
   </body>

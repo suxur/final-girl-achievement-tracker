@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :locations, param: :slug, only: %i[index show]
-  resources :killers, param: :slug, only: %i[index show]
+  resources :locations, param: :slug, only: %i[index show edit update]
+  resources :killers, param: :slug, only: %i[index show edit update]
   resources :users
   resource :home, only: :show, controller: "home"
   resources :plays, only: %i[index new create destroy]
