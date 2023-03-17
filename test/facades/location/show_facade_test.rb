@@ -53,8 +53,11 @@ class Location::ShowFacadeTest < ActiveSupport::TestCase
   end
 
   def test_current_achievements
-    assert_instance_of Array, @facade.current_achievements
-    assert_equal 2, @facade.current_achievements.count
+    assert_instance_of(
+      UserLocationAchievement,
+      @facade.current_achievements.first,
+    )
+    assert_equal 3, @facade.current_achievements.count
   end
 
   private

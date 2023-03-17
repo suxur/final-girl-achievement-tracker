@@ -6,6 +6,6 @@ one:
   series: one
 
 two:
-  name: Dr. Fright
-  slug: dr_fright
-  series: one
+  name: Evomorph
+  slug: evomorph
+  series: two

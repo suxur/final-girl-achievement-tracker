@@ -6,6 +6,6 @@ one:
   series: one
 
 two:
-  name: Maple Lane
-  slug: maple_lane
-  series: one
+  name: The USS Konrad
+  slug: the_uss_konrad
+  series: two

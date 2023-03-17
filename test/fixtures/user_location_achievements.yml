@@ -2,16 +2,17 @@
 
 one:
   user: one
-  killer_achievement: one
+  location_achievement: one
   completed: true
 
 two:
   user: one
-  killer_achievement: two
-  location: one
+  location_achievement: two
+  killer: one
   completed: true
 
 three:
   user: one
-  killer_achievement: three
+  location_achievement: three
+  killer: two
   completed: false

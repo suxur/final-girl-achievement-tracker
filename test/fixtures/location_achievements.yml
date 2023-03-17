@@ -9,3 +9,18 @@ two:
   location: one
   description: Win a game at Camp Happy Trails defeating...
   has_killers: true
+
+three:
+  location: one
+  description: Win a game at Camp Happy Trails defeating...
+  has_killers: true
+
+four:
+  location: two
+  description: Win a game at The USS Konrad defeating...
+  has_killers: true
+
+five:
+  location: two
+  description: Win a game at The USS Konrad defeating...
+  has_killers: true

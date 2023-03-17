@@ -9,3 +9,18 @@ two:
   killer: one
   description: Defeat Hans at...
   has_locations: true
+
+three:
+  killer: one
+  description: Defeat Hans when his Epic Dark Power has been revealed.
+  has_locations: false
+
+four:
+  killer: two
+  description: Defeat Dr. Fright...
+  has_locations: true
+
+five:
+  killer: two
+  description: Defeat Dr. Fright...
+  has_locations: true

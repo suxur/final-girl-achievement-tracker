@@ -3,7 +3,7 @@ require "test_helper"
 class PlaysControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in users(:one)
-    @play = plays(:one)
+    @play = plays(:two)
   end
 
   test "should get index" do
@@ -17,7 +17,9 @@ class PlaysControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create play" do
-    assert_difference("Play.count") { post plays_url, params: { play: {} } }
+    assert_difference("Play.count") do
+      post plays_url, params: { play: play_params }
+    end
 
     assert_redirected_to plays_url
   end
@@ -26,5 +28,15 @@ class PlaysControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Play.count", -1) { delete play_url(@play) }
 
     assert_redirected_to plays_url
+  end
+
+  private
+
+  def play_params
+    {
+      final_girl_id: final_girls(:one).id,
+      killer_id: killers(:one).id,
+      location_id: locations(:one).id,
+    }
   end
 end

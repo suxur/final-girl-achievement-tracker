@@ -4,28 +4,29 @@ class Location::IndexFacade < IndexFacade
   end
 
   def locations
-    Location
-      .order(:id)
-      .map do |location|
-        ProgressCardData.new(
-          location,
-          location.series.name,
-          location.name,
-          calculate_progress(location),
-          location.icon,
-        )
-      end
+    Location.order(:id).map { |l| progress_card_data(l) }
   end
 
-  def calculate_progress(location)
-    (
-      (
-        @user
-          .user_location_achievements
-          .completed(location.achievements)
-          .count
-          .to_f / location.achievements.count.to_f
-      ) * 100
-    ).round.to_i
+  private
+
+  def progress_card_data(location)
+    ProgressCardData.new(
+      location,
+      location.series.name,
+      location.name,
+      CalculateProgress.new(
+        completed_achievements(location),
+        total_achievements(location),
+      ).call,
+      location.icon,
+    )
+  end
+
+  def completed_achievements(location)
+    @user.user_location_achievements.completed(total_achievements(location))
+  end
+
+  def total_achievements(location)
+    location.achievements
   end
 end

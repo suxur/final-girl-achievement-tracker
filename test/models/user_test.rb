@@ -2,6 +2,7 @@ require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
   context "associations" do
+    should have_many :plays
     should have_many :user_killer_achievements
     should have_many :killer_achievements
     should have_many :user_location_achievements

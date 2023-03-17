@@ -6,8 +6,7 @@ class PlaysController < AuthController
       Play
         .joins(:final_girl, :killer, :location)
         .where(user_id: current_user.id)
-        .order(:created_at)
-        .reverse_order
+        .order(created_at: :desc)
   end
 
   def new
@@ -32,12 +31,10 @@ class PlaysController < AuthController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_play
     @play = Play.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def play_params
     params.require(:play).permit(
       :final_girl_id,
