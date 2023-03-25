@@ -23,10 +23,21 @@ class PlaysController < AuthController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @play.update(play_params)
+      redirect_to plays_url, notice: "Play was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @play.destroy
 
-    redirect_to plays_url, notice: "Play was successfully destroyed."
+    redirect_to plays_url, notice: "Play was successfully destroyed.", status: :see_other
   end
 
   private

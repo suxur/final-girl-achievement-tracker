@@ -23,7 +23,7 @@
   }
 
   select {
-    @apply ml-7 mt-1 md:m-0 bg-zinc-900 text-white rounded-md border-zinc-800 focus:ring-primary focus:border-transparent py-1
+    @apply md:m-0 bg-zinc-900 text-white rounded-md border-zinc-800 focus:ring-primary focus:border-transparent py-1
   }
 }
 
@@ -32,5 +32,3 @@
     @apply justify-center inline-flex items-center px-4 py-2 border rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 focus:outline-none disabled:opacity-25 cursor-pointer bg-primary text-white border-transparent hover:bg-red-600 active:bg-red-600
   }
 }
-
-

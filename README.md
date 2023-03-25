@@ -5,7 +5,7 @@ Final Girl community.
 
 ## Features
 - [x] Track Achievements
-- [ ] Game Play Log
+- [x] Game Play Log
 - [ ] User Progress Leaderboards
 - [ ] Mobile App
 

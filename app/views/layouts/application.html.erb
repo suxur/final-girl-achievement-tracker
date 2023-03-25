@@ -24,16 +24,9 @@
     <% end %>
     <main class="bg-zinc-800 flex flex-col h-full w-full">
       <% if user_signed_in? %>
-        <%= button_to(
-          destroy_user_session_path,
-          class: "button absolute right-4 top-4",
-          method: :delete
-        ) do %>
-          <span class="hidden mr-2 sm:inline">Log Out</span> 
-          <i class="fas fa-sign-out-alt"></i>
-        <% end %>
+        <%= render MenuComponent.new(@user) %>
       <% end %>
-      <div class="flex flex-col items-center justify-center mb-4 mt-8 sm:mb-8">
+      <div class="flex flex-col items-center justify-center mb-4 mt-0 sm:mt-8 sm:mb-8">
         <%= link_to root_path do %>
           <%= image_tag("final_girl_logo.png", class: "w-60") %>
           <p class="text-zinc-100 text-xl uppercase">Achievement Tracker</p>

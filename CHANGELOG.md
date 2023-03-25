@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.0 – March 24, 2023
+* Add Dashboard
+* Better Mobile Navigation
+
 ## 1.1.0 – March 14, 2023
 * Add Play Log
 * Layout and Menu Changes

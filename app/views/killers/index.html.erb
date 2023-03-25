@@ -1,5 +1,5 @@
 <div class="container mx-auto">
-  <%= render MenuComponent.new active: killers_path %>
+  <h2 class="font-display text-primary text-4xl">Killers</h2>
   <div class="divide-y divide-solid divide-zinc-600">
     <% @facade.collection.each do |series, killers| %>
       <div class="flex flex-col py-8">
