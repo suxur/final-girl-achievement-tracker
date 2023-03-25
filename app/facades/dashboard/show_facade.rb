@@ -1,17 +1,21 @@
 class Dashboard::ShowFacade < IndexFacade
   def all_killer_achievement_progress
-    ((user_killer_achievement_count / killer_achievement_count.to_f) * 100).round
+    (
+      (user_killer_achievement_count / killer_achievement_count.to_f) * 100
+    ).round
   end
 
   def all_location_achievement_progress
-    ((user_location_achievement_count / location_achievement_count.to_f) * 100).round
+    (
+      (user_location_achievement_count / location_achievement_count.to_f) * 100
+    ).round
   end
 
   def play_chart_data
     return {} if total_plays.zero?
     {
-      "Loss": ((win_loss_play_counts[false] / total_plays) * 100).round,
-      "Win": ((win_loss_play_counts[true] / total_plays) * 100).round,
+      Loss: ((win_loss_play_counts[false] / total_plays) * 100).round,
+      Win: ((win_loss_play_counts[true] / total_plays) * 100).round,
     }
   end
 
@@ -38,6 +42,6 @@ class Dashboard::ShowFacade < IndexFacade
   end
 
   def win_loss_play_counts
-    Play.group(:is_win).count
+    @user.plays.group(:is_win).count
   end
 end
