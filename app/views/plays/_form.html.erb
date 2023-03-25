@@ -28,6 +28,12 @@
         Won?
       <% end %>
     </div>
+    <div class="mb-4">
+      <%= form.label :extreme_horror_mode, "Extreme Horror Mode?", class: "flex items-center" do %>
+        <%= form.check_box :extreme_horror_mode, class: "mr-2 rounded" %>
+        Extreme Horror Mode?
+      <% end %>
+    </div>
   </div>
   <div class="mt-12 flex flex-row justify-end">
     <%= link_to "Back", plays_path, class: "button bg-transparent hover:bg-zinc-800 mr-2" %>

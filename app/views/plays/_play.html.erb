@@ -30,12 +30,21 @@
       <span class="font-bold"><%= play.location.name %></span>
     </div>
   </td>
-  <td class="py-3 px-4 pb-3 absolute top-1/2 right-1 sm:relative">
+  <td class="py-3 px-4 pb-3 absolute bottom-8 right-1 sm:bottom-0 sm:relative">
     <div class="flex md:justify-center items-center">
       <% if play.is_win %>
         <%= image_tag asset_path('recover-health.png'), class: "aspect-square h-7" %>
       <% else %>
         <%= image_tag asset_path('lose-health.png'), class: "aspect-square h-7" %>
+      <% end %>
+    </div>
+  </td>
+  <td class="py-3 px-4 pb-3 absolute bottom-0 right-1 sm:relative">
+    <div class="flex md:justify-center items-center">
+      <% if play.extreme_horror_mode %>
+        <%= image_tag asset_path('horror.png'), class: "aspect-square h-7" %>
+      <% else %>
+        <%= image_tag asset_path('lose_horror.png'), class: "aspect-square h-7" %>
       <% end %>
     </div>
   </td>

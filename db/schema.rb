@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_15_235814) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_25_163648) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,6 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_235814) do
     t.boolean "is_win", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "extreme_horror_mode", default: false
     t.index ["final_girl_id"], name: "index_plays_on_final_girl_id"
     t.index ["killer_id"], name: "index_plays_on_killer_id"
     t.index ["location_id"], name: "index_plays_on_location_id"

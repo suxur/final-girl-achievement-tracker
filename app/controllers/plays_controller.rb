@@ -37,7 +37,9 @@ class PlaysController < AuthController
   def destroy
     @play.destroy
 
-    redirect_to plays_url, notice: "Play was successfully destroyed.", status: :see_other
+    redirect_to plays_url,
+                notice: "Play was successfully destroyed.",
+                status: :see_other
   end
 
   private
@@ -52,6 +54,7 @@ class PlaysController < AuthController
       :killer_id,
       :location_id,
       :is_win,
+      :extreme_horror_mode,
     )
   end
 end
