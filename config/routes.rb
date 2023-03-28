@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   resource :home, only: :show, controller: "home"
   resource :dashboard, only: :show, controller: "dashboard"
   resource :privacy_policy, only: :show, controller: "privacy_policy"
+  resource :profile, only: :show, controller: "users"
 
   resources :locations, param: :slug, only: %i[index show edit update]
   resources :killers, param: :slug, only: %i[index show edit update]
-  resources :users
   resources :plays
+  resources :users, only: %i[show update]
 end

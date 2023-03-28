@@ -51,6 +51,14 @@
             data-transition-leave-from="opacity-100 scale-100"
             data-transition-leave-to="opacity-0 scale-95"
           >
+            <%= link_to(
+              profile_path,
+              class: "block px-4 py-2 text-sm font-bold flex flex-row items-center w-full hover:bg-zinc-100",
+              role: "menuitem",
+              tabindex: "-1"
+            ) do %>
+              Profile
+            <% end %>
             <%= button_to(
               destroy_user_session_path,
               class: "block px-4 py-2 text-sm font-bold flex flex-row items-center w-full hover:bg-zinc-100",

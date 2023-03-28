@@ -1,0 +1,19 @@
+<h1 class="font-display text-primary text-4xl font-bold mb-4">User Profile</h1>
+<div class="w-full sm:w-96 mt-4 text-zinc-50">
+  <%= form_for @user do |f| %>
+    <div class="mb-4">
+      <%= f.label :email do %>
+        Email <span class="text-sm text-primary">cannot be changed</span>
+      <% end %>
+      <%= f.text_field :email, readonly: true %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :username, "Display Name" %>
+      <%= f.text_field :username, autofocus: true %>
+    </div>
+    <div class="mt-12 flex flex-row justify-end">
+      <%= link_to "Back", dashboard_path, class: "button bg-transparent hover:bg-zinc-800 mr-2" %>
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
