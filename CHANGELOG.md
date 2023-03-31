@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.4.1 – March 31, 2023
+* Fix Dashboard Error
+
 ## 1.4.0 – March 25, 2023
 * Add Display Name to Users
 * Upgrade dependencies to fix vulnerabilities
