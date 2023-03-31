@@ -14,8 +14,8 @@ class Dashboard::ShowFacade < IndexFacade
   def play_chart_data
     return {} if total_plays.zero? || win_loss_play_counts.empty?
     {
-      Loss: ((win_loss_play_counts[false] / total_plays) * 100).round,
-      Win: ((win_loss_play_counts[true] / total_plays) * 100).round,
+      Loss: ((loss_count / total_plays) * 100).round,
+      Win: ((win_count / total_plays) * 100).round,
     }
   end
 
@@ -39,6 +39,14 @@ class Dashboard::ShowFacade < IndexFacade
 
   def total_plays
     win_loss_play_counts.values.sum.to_f
+  end
+
+  def win_count
+    win_loss_play_counts[true] || 0
+  end
+
+  def loss_count
+    win_loss_play_counts[false] || 0
   end
 
   def win_loss_play_counts
