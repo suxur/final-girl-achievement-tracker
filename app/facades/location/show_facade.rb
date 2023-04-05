@@ -36,6 +36,10 @@ class Location::ShowFacade < ShowFacade
     built_achievements
   end
 
+  def back_path
+    [:locations]
+  end
+
   private
 
   def record

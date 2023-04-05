@@ -1,5 +1,5 @@
 class ShowFacade
-  def initialize(user, params)
+  def initialize(user, params = {})
     @user = user
     @params = params
   end

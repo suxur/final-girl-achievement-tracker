@@ -15,15 +15,17 @@ class Location::IndexFacade < IndexFacade
       location.series.name,
       location.name,
       CalculateProgress.new(
-        completed_achievements(location),
-        total_achievements(location),
+        completed_achievements(location).count,
+        total_achievements(location).count,
       ).call,
       location.icon,
     )
   end
 
   def completed_achievements(location)
-    @user.user_location_achievements.completed(total_achievements(location))
+    @user
+      .user_location_achievements
+      .completed(total_achievements(location))
   end
 
   def total_achievements(location)

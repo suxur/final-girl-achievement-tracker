@@ -1,44 +1,40 @@
-class Dashboard::ShowFacade < IndexFacade
+class Dashboard::ShowFacade < ShowFacade
   def all_killer_achievement_progress
-    (
-      (user_killer_achievement_count / killer_achievement_count.to_f) * 100
-    ).round
+    CalculateProgress.call(user_killer_achievements, killer_achievements)
   end
 
   def all_location_achievement_progress
-    (
-      (user_location_achievement_count / location_achievement_count.to_f) * 100
-    ).round
+    CalculateProgress.call(user_location_achievements, location_achievements)
   end
 
   def play_chart_data
     return {} if total_plays.zero? || win_loss_play_counts.empty?
     {
-      Loss: ((loss_count / total_plays) * 100).round,
-      Win: ((win_count / total_plays) * 100).round,
+      Loss: CalculateProgress.call(loss_count, total_plays),
+      Win: CalculateProgress.call(win_count, total_plays),
     }
   end
 
   private
 
-  def killer_achievement_count
+  def killer_achievements
     KillerAchievement.count
   end
 
-  def user_killer_achievement_count
+  def user_killer_achievements
     @user.user_killer_achievements.where(completed: true).count
   end
 
-  def location_achievement_count
+  def location_achievements
     LocationAchievement.count
   end
 
-  def user_location_achievement_count
+  def user_location_achievements
     @user.user_location_achievements.where(completed: true).count
   end
 
   def total_plays
-    win_loss_play_counts.values.sum.to_f
+    win_loss_play_counts.values.sum
   end
 
   def win_count

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_27_135512) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_30_213202) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -142,4 +142,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_135512) do
   add_foreign_key "user_location_achievements", "killers", name: "user_location_achievements_killer_id_fkey"
   add_foreign_key "user_location_achievements", "location_achievements", name: "user_location_achievements_location_achievement_id_fkey"
   add_foreign_key "user_location_achievements", "users", name: "user_location_achievements_user_id_fkey"
+
+  create_view "leaderboard_stats", sql_definition: <<-SQL
+      SELECT u.id AS user_id,
+      u.email,
+      u.username AS display_name,
+      (COALESCE(k.completed_count, (0)::bigint) + COALESCE(l.completed_count, (0)::bigint)) AS completed_achievements,
+      (( SELECT count(*) AS count
+             FROM killer_achievements) + ( SELECT count(*) AS count
+             FROM location_achievements)) AS total_achievements
+     FROM ((users u
+       LEFT JOIN ( SELECT user_killer_achievements.user_id,
+              count(*) AS completed_count
+             FROM user_killer_achievements
+            WHERE (user_killer_achievements.completed = true)
+            GROUP BY user_killer_achievements.user_id) k ON ((u.id = k.user_id)))
+       LEFT JOIN ( SELECT user_location_achievements.user_id,
+              count(*) AS completed_count
+             FROM user_location_achievements
+            WHERE (user_location_achievements.completed = true)
+            GROUP BY user_location_achievements.user_id) l ON ((u.id = l.user_id)))
+    ORDER BY (COALESCE(k.completed_count, (0)::bigint) + COALESCE(l.completed_count, (0)::bigint)) DESC;
+  SQL
 end

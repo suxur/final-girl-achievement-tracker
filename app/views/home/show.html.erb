@@ -1,28 +1,4 @@
 <div class="container mx-auto">
-  <h2 class="font-display text-primary text-4xl">Killers</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 mt-4">
-    <% @killers.map do |killer| %>
-      <%= link_to(killer) do %>
-        <%= render ProgressCardComponent.new(
-          title: killer.name,
-          progress: ((current_user.user_killer_achievements.completed(killer.achievements).count.to_f / killer.achievements.count.to_f) * 100).round.to_i,
-          icon: killer.icon
-        ) %>
-      <% end %>
-    <% end %>
-  </div>
-  <hr class="border-0 border-b-2 border-zinc-700 w-full my-8">
-  <h2 class="font-display text-primary text-4xl">Locations</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 mt-4">
-    <% @locations.map do |location| %>
-      <%= link_to(location) do %>
-        <%= render ProgressCardComponent.new(
-          title: location.name,
-          progress: ((current_user.user_location_achievements.completed(location.achievements).count.to_f / location.achievements.count.to_f) * 100).round.to_i,
-          icon: location.icon
-        ) %>
-      <% end %>
-    <% end %>
-  </div>
+  <h2 class="font-display text-primary text-4xl">Home</h2>
 </div>
 

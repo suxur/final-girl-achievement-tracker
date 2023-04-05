@@ -15,8 +15,8 @@ class Killer::IndexFacade < IndexFacade
       killer.series.name,
       killer.name,
       CalculateProgress.new(
-        completed_achievements(killer),
-        total_achievements(killer),
+        completed_achievements(killer).count,
+        total_achievements(killer).count,
       ).call,
       killer.icon,
     )

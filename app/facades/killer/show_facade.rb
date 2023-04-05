@@ -32,6 +32,10 @@ class Killer::ShowFacade < ShowFacade
     built_achievements
   end
 
+  def back_path
+    [:killers]
+  end
+
   private
 
   def record

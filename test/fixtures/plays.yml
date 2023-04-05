@@ -5,9 +5,11 @@ one:
   final_girl: one
   killer: one
   location: one
+  is_win: true
 
 two:
   user: one
   final_girl: two
   killer: two
   location: two
+  is_win: false

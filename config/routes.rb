@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resource :dashboard, only: :show, controller: "dashboard"
   resource :privacy_policy, only: :show, controller: "privacy_policy"
   resource :profile, only: :show, controller: "users"
+  resource :leaderboard, only: :show, controller: "leaderboard"
 
   resources :locations, param: :slug, only: %i[index show edit update]
   resources :killers, param: :slug, only: %i[index show edit update]

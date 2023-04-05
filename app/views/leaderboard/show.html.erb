@@ -1,0 +1,21 @@
+<div class="container mx-auto">
+  <h2 class="font-display text-primary text-4xl">Leaderboard</h2>
+  <h3 class="text-zinc-50 text-xl font-bold mt-8">All Achievements</h3>
+  <% @users.each do |user| %>
+    <div class="flex flex-col py-4">
+      <div class="flex flex-row justify-between items-center mb-4 text-zinc-50">
+        <div class="flex flex-row items-center">
+          <img class="h-8 w-8 rounded-full" src="<%= user.gravatar_url %>">
+          <p class="ml-2"><%= user.display_name || "Anonymous" %></p>
+        </div>
+        <p><%= user.total_progress %>%</p>
+      </div>
+      <div class="overflow-hidden h-4 text-xs flex rounded bg-zinc-200 w-full">
+        <div style="width: <%= user.total_progress %>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary"></div>
+      </div>
+    </div>
+  <% end %>
+  <div class="flex flex-row justify-center items-center mt-8">
+    <%== pagy_nav(@pagy) %>
+  </div>
+</div>

@@ -60,6 +60,10 @@ class Location::ShowFacadeTest < ActiveSupport::TestCase
     assert_equal 3, @facade.current_achievements.count
   end
 
+  def test_back_path
+    assert_equal [:locations], @facade.back_path
+  end
+
   private
 
   def params
