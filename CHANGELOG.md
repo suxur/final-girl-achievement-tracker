@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.4.2 – April 12, 2023
+* Fix Privacy Policy Link
+
 ## 1.4.1 – March 31, 2023
 * Fix Dashboard Error
 
