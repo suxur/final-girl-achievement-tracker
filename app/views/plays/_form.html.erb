@@ -23,6 +23,12 @@
       <%= form.collection_select :location_id, Location.all, :id, :name, { prompt: "Select a Location" }, class: "w-full mt-1", required: true  %>
     </div>
     <div class="mb-4">
+      <%= form.label :created_at, "Play Date", class: "mb-2" %>
+      <div class="w-full">
+        <%= form.datetime_field :created_at, class: "bg-zinc-900 text-white rounded-md border-zinc-800 focus:ring-primary focus:border-transparent py-1 w-full mt-1", required: true  %>
+      </div>
+    </div>
+    <div class="mb-4">
       <%= form.label :is_win, "Won?", class: "flex items-center" do %>
         <%= form.check_box :is_win, class: "mr-2 rounded" %>
         Won?

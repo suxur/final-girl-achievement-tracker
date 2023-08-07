@@ -10,7 +10,7 @@ class PlaysController < AuthController
   end
 
   def new
-    @play = current_user.plays.new
+    @play = current_user.plays.new(created_at: Time.current)
   end
 
   def create
@@ -37,9 +37,7 @@ class PlaysController < AuthController
   def destroy
     @play.destroy
 
-    redirect_to plays_url,
-                notice: "Play was successfully destroyed.",
-                status: :see_other
+    redirect_to plays_url, notice: "Play was successfully destroyed.", status: :see_other
   end
 
   private
@@ -53,8 +51,9 @@ class PlaysController < AuthController
       :final_girl_id,
       :killer_id,
       :location_id,
+      :created_at,
       :is_win,
-      :extreme_horror_mode,
+      :extreme_horror_mode
     )
   end
 end
