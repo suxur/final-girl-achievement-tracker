@@ -9,6 +9,20 @@ class KillersController < AuthController
     @facade = Killer::ShowFacade.new current_user, params
   end
 
+  def new
+    @killer = Killer.new
+  end
+
+  def create
+    @killer = Killer.new(killer_params)
+
+    if @killer.save
+      redirect_to killers_url, notice: "Killer was successfully created."
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def edit
   end
 

@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   resource :profile, only: :show, controller: "users"
   resource :leaderboard, only: :show, controller: "leaderboard"
 
-  resources :locations, param: :slug, only: %i[index show edit update]
-  resources :killers, param: :slug, only: %i[index show edit update]
+  resources :locations, param: :slug
+  resources :killers, param: :slug
+  resources :series, only: %i[index new create edit update]
   resources :plays
   resources :users, only: %i[show update]
 end

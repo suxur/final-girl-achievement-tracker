@@ -1,4 +1,5 @@
 class LocationsController < AuthController
+  before_action :authorize_model, only: %i[new create edit update]
   before_action :set_location, only: %i[edit update]
 
   def index
@@ -7,6 +8,20 @@ class LocationsController < AuthController
 
   def show
     @facade = Location::ShowFacade.new current_user, params
+  end
+
+  def new
+    @location = Location.new
+  end
+
+  def create
+    @location = Location.new(location_params)
+
+    if @location.save
+      redirect_to locations_url, notice: "Location was successfully created."
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit

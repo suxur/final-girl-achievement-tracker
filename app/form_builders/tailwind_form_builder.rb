@@ -1,6 +1,10 @@
 class TailwindFormBuilder < ActionView::Helpers::FormBuilder
   include ActionView::Helpers::TagHelper
 
+  def errors(model)
+    @template.render "errors", model: model
+  end
+
   def label(method, text = nil, opts = {}, &block)
     default_opts = {class: "block cursor-pointer text-white"}
     merged_opts = default_opts.merge(opts)

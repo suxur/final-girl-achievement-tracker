@@ -1,0 +1,15 @@
+<div class="text-zinc-50 flex flex-row justify-between items-center mb-4 w-full">
+  <h1 class="font-display text-primary text-4xl">Series</h1>
+  <%= link_to "Add Series", new_series_path, class: "button" %>
+</div>
+<table class="table-auto border-collapse min-w-full text-white">
+  <thead class="hidden sm:table-header-group">
+    <tr>
+      <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
+      <th class="text-center py-3 px-4 uppercase font-semibold text-sm"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "series", collection: @facade.collection %>
+  </tbody>
+</table>

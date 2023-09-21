@@ -1,0 +1,9 @@
+<%= form_for @series do |f| %>
+  <%= f.errors @series %>
+  <div class="mb-4">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <%= link_to "Back", series_index_path, class: "button bg-transparent hover:bg-zinc-800 mr-2" %>
+  <%= f.submit %>
+<% end %>

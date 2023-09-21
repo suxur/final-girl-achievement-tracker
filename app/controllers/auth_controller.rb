@@ -7,4 +7,8 @@ class AuthController < ApplicationController
   def set_user
     @user = GravatarDecorator.new(current_user)
   end
+
+  def authorize_model
+    authorize controller_name.classify.constantize
+  end
 end
