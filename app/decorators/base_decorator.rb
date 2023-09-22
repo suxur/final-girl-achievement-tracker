@@ -20,4 +20,3 @@ class BaseDecorator < SimpleDelegator
     @object.respond_to?(:source_object) ? @object.source_object : @object
   end
 end
-

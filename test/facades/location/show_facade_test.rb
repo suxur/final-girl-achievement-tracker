@@ -39,23 +39,14 @@ class Location::ShowFacadeTest < ActiveSupport::TestCase
     assert_equal :has_killers, @facade.has_method
   end
 
-  def test_chooseables
-    assert_instance_of Array, @facade.chooseables
-    assert_equal ["Hans", 980_190_962], @facade.chooseables.first
-  end
-
-  def test_chooseable_id
-    assert_equal :killer_id, @facade.chooseable_id
-  end
-
-  def test_chooseable_prompt
-    assert_equal "Choose a Killer", @facade.chooseable_prompt
+  def test_chooseable
+    assert_instance_of Chooseable::Killers, @facade.chooseable
   end
 
   def test_current_achievements
     assert_instance_of(
       UserLocationAchievement,
-      @facade.current_achievements.first,
+      @facade.current_achievements.first
     )
     assert_equal 3, @facade.current_achievements.count
   end
@@ -67,6 +58,6 @@ class Location::ShowFacadeTest < ActiveSupport::TestCase
   private
 
   def params
-    { slug: :camp_happy_trails }
+    {slug: :camp_happy_trails}
   end
 end

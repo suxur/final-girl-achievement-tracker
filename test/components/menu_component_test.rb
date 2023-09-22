@@ -3,31 +3,23 @@
 require "test_helper"
 
 class MenuComponentTest < ViewComponent::TestCase
-  def test_renders_outer_structure
-    render_inline MenuComponent.new active: nil
+  def setup
+    @user = users :one
+  end
 
-    assert_selector 'div[class="flex justify-center items-center mb-8 sm:mb-4"]'
-    assert_selector 'div > div[class="flex flex-row"]'
+  def test_renders_outer_structure
+    render_inline MenuComponent.new(@user)
+
+    assert_selector "nav[data-controller='dropdown']", class: "bg-transparent"
   end
 
   def test_renders_menu_items
-    render_inline MenuComponent.new active: nil
+    render_inline MenuComponent.new(@user)
 
+    assert_selector 'div > div > a[href="/dashboard"]'
     assert_selector 'div > div > a[href="/killers"]'
     assert_selector 'div > div > a[href="/locations"]'
     assert_selector 'div > div > a[href="/plays"]'
-  end
-
-  def test_renders_active_item
-    render_inline MenuComponent.new active: "/killers"
-
-    assert_selector "div > div > a[href='/killers'][class='#{default_classes} text-primary hover:text-red-700']"
-    refute_selector "div > div > a[href='/killers'][class='#{default_classes} text-zinc-600 hover:text-zinc-700']"
-  end
-
-  private
-
-  def default_classes
-    "font-display text-3xl sm:text-4xl border-r pr-4 mr-4 last:border-r-0 border-zinc-600 last:pr-0 last:mr-0"
+    assert_selector 'div > div > a[href="/leaderboard"]'
   end
 end

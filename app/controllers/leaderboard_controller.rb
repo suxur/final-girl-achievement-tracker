@@ -4,7 +4,7 @@ class LeaderboardController < AuthController
 
     @users =
       GravatarDecorator.decorate_collection(
-        TotalProgressDecorator.decorate_collection(users),
+        TotalProgressDecorator.decorate_collection(users)
       )
   end
 
@@ -13,7 +13,7 @@ class LeaderboardController < AuthController
   def leaderboard_stats
     @leaderboard_stats ||=
       LeaderboardStat.where("completed_achievements > 0").order(
-        completed_achievements: :desc,
+        completed_achievements: :desc
       )
   end
 end

@@ -1,19 +1,27 @@
 # frozen_string_literal: true
 
-class IconComponent < ViewComponent::Base
+class IconComponent < ApplicationComponent
   def initialize(icon, **options)
     @icon = icon
-    @classes = options[:class]
+    @options = options
+
+    @options[:tag] ||= :div
+    @options[:class] = class_names options[:class], default_classes
+  end
+
+  def call
+    render ApplicationComponent.new(**@options) do
+      image_tag @icon, class: "h-7"
+    end
   end
 
   def render?
     @icon.present?
   end
 
-  def classes
-    class_names(
-      "absolute rounded-full h-12 w-12 flex justify-center items-center border-4 border-zinc-900 bg-zinc-400 group-hover:bg-primary",
-      @classes,
-    )
+  private
+
+  def default_classes
+    "absolute rounded-full h-12 w-12 flex justify-center items-center border-4 border-zinc-900 bg-zinc-400 group-hover:bg-primary"
   end
 end

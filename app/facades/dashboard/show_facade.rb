@@ -11,26 +11,26 @@ class Dashboard::ShowFacade < ShowFacade
     return {} if total_plays.zero? || win_loss_play_counts.empty?
     {
       Loss: CalculateProgress.call(loss_count, total_plays),
-      Win: CalculateProgress.call(win_count, total_plays),
+      Win: CalculateProgress.call(win_count, total_plays)
     }
   end
 
   private
 
   def killer_achievements
-    KillerAchievement.count
+    @killer_achievements ||= KillerAchievement.count
   end
 
   def user_killer_achievements
-    @user.user_killer_achievements.where(completed: true).count
+    user.user_killer_achievements.where(completed: true).count
   end
 
   def location_achievements
-    LocationAchievement.count
+    @location_achievements ||= LocationAchievement.count
   end
 
   def user_location_achievements
-    @user.user_location_achievements.where(completed: true).count
+    user.user_location_achievements.where(completed: true).count
   end
 
   def total_plays
@@ -46,6 +46,6 @@ class Dashboard::ShowFacade < ShowFacade
   end
 
   def win_loss_play_counts
-    @user.plays.group(:is_win).count
+    user.plays.group(:is_win).count
   end
 end

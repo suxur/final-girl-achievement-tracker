@@ -25,9 +25,7 @@
         <div class="hidden sm:block">
           <div class="flex space-x-4">
             <!-- Current: "bg-zinc-900 text-white", Default: "text-gray-300 hover:bg-zinc-700 hover:text-white" -->
-            <% menu_items.each do |menu_item| %>
-              <%= link_to menu_item[:name], menu_item[:path], class: menu_item[:class] %>
-            <% end %>
+            <%= render MenuItemComponent.with_collection(items) %>
           </div>
         </div>
       </div>
@@ -86,8 +84,8 @@
     data-transition-leave-to="opacity-0 scale-95"
   >
     <div class="space-y-1 px-2 pt-2 pb-3">
-      <% menu_items.each do |menu_item| %>
-        <%= link_to menu_item[:name], menu_item[:path], class: "block px-4 py-2 text-sm font-bold flex flex-row items-center w-full hover:bg-zinc-100" %>
+      <% items.each do |item| %>
+        <%= link_to item[:name], item[:path], class: "block px-4 py-2 text-sm font-bold flex flex-row items-center w-full hover:bg-zinc-100" %>
       <% end %>
     </div>
   </div>

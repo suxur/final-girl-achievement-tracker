@@ -15,20 +15,8 @@ class Location::ShowFacade < ShowFacade
     :has_killers
   end
 
-  def chooseables
-    @chooseables ||= Killer.all.collect { |p| [p.name, p.id] }
-  end
-
-  def chooseable_id
-    :killer_id
-  end
-
-  def chooseable_type
-    :killer_id
-  end
-
-  def chooseable_prompt
-    "Choose a Killer"
+  def chooseable
+    @chooseable ||= Chooseable::Killers.new
   end
 
   def current_achievements
@@ -52,7 +40,7 @@ class Location::ShowFacade < ShowFacade
   end
 
   def current_location_achievements
-    @user
+    user
       .user_location_achievements
       .where(location_achievement_id: achievements)
       .order(:location_achievement_id)
@@ -60,8 +48,8 @@ class Location::ShowFacade < ShowFacade
 
   def built_achievements
     achievements.map do |achievement|
-      @user.user_location_achievements.build(
-        location_achievement_id: achievement.id,
+      user.user_location_achievements.build(
+        location_achievement_id: achievement.id
       )
     end
   end

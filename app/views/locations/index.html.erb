@@ -1,5 +1,5 @@
 <div class="container mx-auto">
-  <h2 class="font-display text-primary text-4xl">Locations</h2>
+  <%= render PageTitleComponent.new title: "Locations" %>
   <div class="divide-y divide-solid divide-zinc-600">
     <% @facade.collection.each do |series, locations| %>
       <div class="flex flex-col py-8">

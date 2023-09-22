@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class KillersController < AuthController
-  before_action :set_killer, only: %i[edit update]
+  before_action :authorize_model, except: %i[index show]
 
   def index
     @facade = Killer::IndexFacade.new current_user, params
@@ -14,7 +16,7 @@ class KillersController < AuthController
   end
 
   def create
-    @killer = Killer.new(killer_params)
+    @killer = Killer.new killer_params
 
     if @killer.save
       redirect_to killers_url, notice: "Killer was successfully created."
@@ -24,18 +26,18 @@ class KillersController < AuthController
   end
 
   def edit
+    killer
   end
 
   def update
-    @killer.update killer_params
-    redirect_to killer_path(@killer), notice: "Killer updated."
+    killer.update killer_params
+    redirect_to killer_path(killer), notice: "Killer updated."
   end
 
   private
 
-  def set_killer
-    @killer = Killer.find_by(slug: params[:slug])
-    authorize @killer
+  def killer
+    @killer ||= authorize Killer.find_by(slug: params[:slug])
   end
 
   def killer_params

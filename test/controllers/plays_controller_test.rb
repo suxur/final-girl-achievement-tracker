@@ -1,6 +1,6 @@
-require "test_helper"
+require_relative "../integration_test"
 
-class PlaysControllerTest < ActionDispatch::IntegrationTest
+class PlaysControllerTest < IntegrationTest
   setup do
     sign_in users(:one)
     @play = plays(:two)
@@ -18,9 +18,10 @@ class PlaysControllerTest < ActionDispatch::IntegrationTest
 
   test "should create play" do
     assert_difference("Play.count") do
-      post plays_url, params: { play: play_params }
+      post plays_url, params: {play: play_params}
     end
 
+    assert false
     assert_redirected_to plays_url
   end
 
@@ -36,7 +37,7 @@ class PlaysControllerTest < ActionDispatch::IntegrationTest
     {
       final_girl_id: final_girls(:one).id,
       killer_id: killers(:one).id,
-      location_id: locations(:one).id,
+      location_id: locations(:one).id
     }
   end
 end

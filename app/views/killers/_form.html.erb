@@ -1,5 +1,5 @@
-<%= form_for @killer do |f| %>
-  <%= f.errors @killer %>
+<%= form_with model: killer do |f| %>
+  <%= f.errors killer %>
   <div class="mb-4">
     <%= f.label :name %>
     <%= f.text_field :name %>

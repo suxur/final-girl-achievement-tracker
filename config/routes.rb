@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resource :home, only: :show, controller: "home"
   resource :dashboard, only: :show, controller: "dashboard"
   resource :privacy_policy, only: :show, controller: "privacy_policy"
   resource :profile, only: :show, controller: "users"

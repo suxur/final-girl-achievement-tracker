@@ -1,5 +1,5 @@
   <div class="text-zinc-50 flex flex-row justify-between items-center mb-4 w-full">
-    <h1 class="font-display text-primary text-4xl">Play Log</h1>
+    <%= render PageTitleComponent.new title: "Play Log" %>
     <%= link_to 'Add Play', new_play_path, class: "button" %>
   </div>
   <table class="table-auto border-collapse min-w-full text-white">
@@ -15,6 +15,6 @@
       </tr>
     </thead>
     <tbody>
-      <%= render @plays %>
+      <%= render @facade.plays %>
     </tbody>
   </table>

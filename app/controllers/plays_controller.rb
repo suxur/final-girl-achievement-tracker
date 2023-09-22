@@ -1,12 +1,6 @@
 class PlaysController < AuthController
-  before_action :set_play, only: %i[show edit update destroy]
-
   def index
-    @plays =
-      Play
-        .joins(:final_girl, :killer, :location)
-        .where(user_id: current_user.id)
-        .order(created_at: :desc)
+    @facade = Play::IndexFacade.new current_user
   end
 
   def new
@@ -14,9 +8,9 @@ class PlaysController < AuthController
   end
 
   def create
-    @play = current_user.plays.new(play_params)
+    play = current_user.plays.new play_params
 
-    if @play.save
+    if play.save
       redirect_to plays_url, notice: "Play was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -24,10 +18,11 @@ class PlaysController < AuthController
   end
 
   def edit
+    play
   end
 
   def update
-    if @play.update(play_params)
+    if play.update play_params
       redirect_to plays_url, notice: "Play was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -35,15 +30,15 @@ class PlaysController < AuthController
   end
 
   def destroy
-    @play.destroy
+    play.destroy
 
     redirect_to plays_url, notice: "Play was successfully destroyed.", status: :see_other
   end
 
   private
 
-  def set_play
-    @play = Play.find(params[:id])
+  def play
+    @play ||= Play.find(params[:id])
   end
 
   def play_params

@@ -17,7 +17,7 @@ class IconComponentTest < ViewComponent::TestCase
 
   def test_component_renders_with_additional_classes
     render_inline IconComponent.new(@killer.icon, class: "w-7")
-    assert_selector "div[class='#{classes} w-7'] > img"
+    assert_selector "div[class='w-7 #{classes}'] > img"
   end
 
   private

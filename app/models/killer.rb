@@ -9,4 +9,8 @@ class Killer < ApplicationRecord
   def to_param
     slug
   end
+
+  def self.chooseables
+    @chooseables ||= all.collect { |record| [record.name, record.id] }
+  end
 end

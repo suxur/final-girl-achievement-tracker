@@ -2,7 +2,6 @@
 
 class SeriesController < AuthController
   before_action :authorize_model
-  before_action :set_series, only: %i[edit update]
 
   def index
     @facade = Series::IndexFacade.new current_user, params
@@ -13,9 +12,9 @@ class SeriesController < AuthController
   end
 
   def create
-    @series = Series.create series_params
+    series = Series.create series_params
 
-    if @series.save
+    if series.save
       redirect_to series_index_url, notice: "Series was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -23,18 +22,18 @@ class SeriesController < AuthController
   end
 
   def edit
+    series
   end
 
   def update
-    @series.update series_params
-    redirect_to series_path(@series), notice: "Series updated."
+    series.update series_params
+    redirect_to series_path(series), notice: "Series updated."
   end
 
   private
 
-  def set_series
-    @series = Series.find(params[:id])
-    authorize @series
+  def series
+    @series ||= authorize Series.find(params[:id])
   end
 
   def series_params

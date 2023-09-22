@@ -1,5 +1,5 @@
 <div class="container mx-auto">
-  <h2 class="font-display text-primary text-4xl">Leaderboard</h2>
+  <%= render PageTitleComponent.new title: "Leaderboard" %>
   <h3 class="text-zinc-50 text-xl font-bold mt-8">All Achievements</h3>
   <% @users.each do |user| %>
     <div class="flex flex-col py-4">

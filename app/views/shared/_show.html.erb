@@ -15,12 +15,12 @@
             <% end %>
             <% if ka_form.object.send(facade.achievement_type).send(facade.has_method) %>
               <%= ka_form.select(
-                facade.chooseable_id,
-                facade.chooseables,
-                { prompt: facade.chooseable_prompt },
+                facade.chooseable.id,
+                facade.chooseable.items,
+                { prompt: facade.chooseable.prompt },
               ) %>
             <% else %>
-              <%= ka_form.hidden_field facade.chooseable_id %>
+              <%= ka_form.hidden_field facade.chooseable.id %>
             <% end %>
           </div>
           <%= ka_form.hidden_field facade.achievement_type_id %>
