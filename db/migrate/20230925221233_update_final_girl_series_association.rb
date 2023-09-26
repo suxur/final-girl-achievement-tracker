@@ -1,7 +1,10 @@
 class UpdateFinalGirlSeriesAssociation < ActiveRecord::Migration[7.0]
   def up
     FinalGirl.all.each do |final_girl|
-      final_girl.create_series(series_id: final_girl.series_id)
+      FinalGirlSeries.create(
+        series_id: final_girl.series_id,
+        final_girl_id: final_girl.id
+      )
     end
 
     remove_column :final_girls, :series_id, if_exists: true
