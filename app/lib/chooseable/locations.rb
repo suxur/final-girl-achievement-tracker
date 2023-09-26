@@ -4,7 +4,7 @@ class Chooseable::Locations
   end
 
   def id
-    :location
+    :location_id
   end
 
   def prompt

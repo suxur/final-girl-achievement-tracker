@@ -1,0 +1,2 @@
+module UserFinalGirlsHelper
+end

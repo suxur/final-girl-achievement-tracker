@@ -57,6 +57,14 @@
             ) do %>
               Profile
             <% end %>
+            <%= link_to(
+              user_final_girls_path,
+              class: "block px-4 py-2 text-sm font-bold flex flex-row items-center w-full hover:bg-zinc-100",
+              role: "menuitem",
+              tabindex: "-1"
+            ) do %>
+              My Final Girls
+            <% end %>
             <%= button_to(
               destroy_user_session_path,
               class: "block px-4 py-2 text-sm font-bold flex flex-row items-center w-full hover:bg-zinc-100",

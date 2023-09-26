@@ -7,6 +7,11 @@ class KillerPolicyTest < ActiveSupport::TestCase
     @killer = killers(:one)
   end
 
+  def test_index
+    assert_permit(@admin, @killer, :index)
+    assert_permit(@user, @killer, :index)
+  end
+
   def test_show
     assert_permit(@admin, @killer, :show)
     assert_permit(@user, @killer, :show)

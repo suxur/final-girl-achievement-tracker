@@ -45,6 +45,14 @@ class KillersControllerTest < IntegrationTest
     assert_redirected_to killers_url
   end
 
+  test "should render new if killer is invalid" do
+    sign_in_admin
+    assert_no_difference("Killer.count") do
+      post killers_url, params: {killer: {name: ""}}
+    end
+    assert_response :unprocessable_entity
+  end
+
   test "a user should not get edit" do
     sign_in_user
     get edit_killer_url(@killer)

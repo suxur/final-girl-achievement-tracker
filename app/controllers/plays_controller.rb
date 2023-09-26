@@ -4,13 +4,13 @@ class PlaysController < AuthController
   end
 
   def new
-    @play = current_user.plays.new(created_at: Time.current)
+    @facade = Play::NewFacade.new current_user
   end
 
   def create
-    play = current_user.plays.new play_params
+    @facade = Play::NewFacade.new current_user, play_params
 
-    if play.save
+    if @facade.model.save
       redirect_to plays_url, notice: "Play was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -18,11 +18,13 @@ class PlaysController < AuthController
   end
 
   def edit
-    play
+    @facade = Play::EditFacade.new current_user, params
   end
 
   def update
-    if play.update play_params
+    @facade = Play::EditFacade.new current_user, params, strong_params: play_params
+
+    if @facade.model.save
       redirect_to plays_url, notice: "Play was successfully updated."
     else
       render :edit, status: :unprocessable_entity

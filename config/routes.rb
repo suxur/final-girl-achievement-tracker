@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   authenticated :user do
-    root to: "dashboard#show", as: :authenticated_root
+    root to: redirect("/dashboard"), as: :authenticated_root
   end
   root to: redirect("/users/sign_in")
 
@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   resources :series, only: %i[index new create edit update]
   resources :plays
   resources :users, only: %i[show update]
+  resources :user_final_girls
 end

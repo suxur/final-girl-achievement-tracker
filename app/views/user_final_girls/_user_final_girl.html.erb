@@ -1,0 +1,17 @@
+<tr id="<%= dom_id user_final_girl %>" class="odd:bg-zinc-600 even:bg-zinc-700 text-zinc-50 flex flex-col relative sm:table-row first:rounded-t-lg last:rounded-b-lg">
+  <td class="text-left md:py-3 px-4">
+    <div class="flex flex-row items-center">
+      <span class="font-bold"><%= user_final_girl.name %></span>
+    </div>
+  </td>
+  <td class="py-3 px-4 absolute top-0 right-0 sm:relative">
+    <div class="flex justify-end items-center">
+      <%= link_to edit_user_final_girl_path(user_final_girl), class: "button h-7 w-7 bg-transparent hover:bg-zinc-800 mr-2" do %>
+        <i class="fa-solid fa-pen-to-square"></i>
+      <% end %>
+      <%= button_to user_final_girl_path(user_final_girl), method: :delete, class: "button h-7 w-7 bg-transparent hover:bg-primary", form: { data: { turbo_confirm: "Are you sure you want to delete this final girl?" } } do %>
+        <i class="fa-solid fa-trash-can"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>

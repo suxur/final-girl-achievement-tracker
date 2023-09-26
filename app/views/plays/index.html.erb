@@ -1,20 +1,20 @@
-  <div class="text-zinc-50 flex flex-row justify-between items-center mb-4 w-full">
-    <%= render PageTitleComponent.new title: "Play Log" %>
-    <%= link_to 'Add Play', new_play_path, class: "button" %>
-  </div>
-  <table class="table-auto border-collapse min-w-full text-white">
-    <thead class="hidden sm:table-header-group">
-      <tr>
-        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Date</th>
-        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Final Girl</th>
-        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Killer</th>
-        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Location</th>
-        <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Won?</th>
-        <th class="text-center py-3 px-4 uppercase font-semibold text-sm">EHM?</th>
-        <th class="text-center py-3 px-4 uppercase font-semibold text-sm"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render @facade.plays %>
-    </tbody>
-  </table>
+<div class="text-zinc-50 flex flex-row justify-between items-center mb-4 w-full">
+  <%= render PageTitleComponent.new title: "Play Log" %>
+  <%= link_to 'Add Play', new_play_path, class: "button" %>
+</div>
+<table class="table-auto border-collapse min-w-full text-white">
+  <thead class="hidden sm:table-header-group">
+    <tr>
+      <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Date</th>
+      <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Final Girl</th>
+      <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Killer</th>
+      <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Location</th>
+      <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Won?</th>
+      <th class="text-center py-3 px-4 uppercase font-semibold text-sm">EHM?</th>
+      <th class="text-center py-3 px-4 uppercase font-semibold text-sm"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @facade.plays %>
+  </tbody>
+</table>

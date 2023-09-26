@@ -1,10 +1,15 @@
-require 'test_helper'
+require "test_helper"
 
 class LocationPolicyTest < ActiveSupport::TestCase
   setup do
     @admin = users(:one)
     @user = users(:two)
     @location = locations(:one)
+  end
+
+  def test_index
+    assert_permit(@admin, @location, :index)
+    assert_permit(@user, @location, :index)
   end
 
   def test_show

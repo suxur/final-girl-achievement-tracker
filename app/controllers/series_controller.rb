@@ -12,9 +12,9 @@ class SeriesController < AuthController
   end
 
   def create
-    series = Series.create series_params
+    @series = Series.create series_params
 
-    if series.save
+    if @series.save
       redirect_to series_index_url, notice: "Series was successfully created."
     else
       render :new, status: :unprocessable_entity

@@ -1,0 +1,13 @@
+<%= form_with model: [:user, model], class: "contents" do |form| %>
+  <%= form.errors model %>
+  <div class="flex flex-col">
+    <div class="mb-4">
+      <%= form.label :name %>
+      <%= form.text_field :name, autofocus: true %>
+    </div>
+  </div>
+  <div class="mt-12 flex flex-row justify-end">
+    <%= link_to "Back", user_final_girls_path, class: "button bg-transparent hover:bg-zinc-800 mr-2" %>
+    <%= form.submit "Save" %>
+  </div>
+<% end %>

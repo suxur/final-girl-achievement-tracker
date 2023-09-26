@@ -12,6 +12,10 @@ class KillerTest < ActiveSupport::TestCase
     should have_one_attached :icon
   end
 
+  context "validations" do
+    should validate_presence_of :name
+  end
+
   def test_to_param
     assert_equal @killer.slug, @killer.to_param
   end

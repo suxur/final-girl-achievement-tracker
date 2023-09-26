@@ -45,6 +45,14 @@ class SeriesControllerTest < IntegrationTest
     assert_redirected_to series_index_url
   end
 
+  test "should render new if series is invalid" do
+    sign_in_admin
+    assert_no_difference("Series.count") do
+      post series_index_url, params: {series: {name: ""}}
+    end
+    assert_response :unprocessable_entity
+  end
+
   test "a user should not get edit" do
     sign_in_user
     get edit_series_url(@series)

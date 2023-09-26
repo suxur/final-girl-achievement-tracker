@@ -106,6 +106,7 @@ group :test do
   gem "selenium-webdriver"
   gem "shoulda"
   gem "webdrivers"
+  gem "simplecov"
 end
 
 gem "scenic", "~> 1.7"

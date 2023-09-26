@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_30_213202) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_25_222956) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,8 +38,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_213202) do
     t.string "variation_digest", null: false
   end
 
+  create_table "final_girl_series", force: :cascade do |t|
+    t.bigint "final_girl_id"
+    t.bigint "series_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["final_girl_id"], name: "index_final_girl_series_on_final_girl_id"
+    t.index ["series_id"], name: "index_final_girl_series_on_series_id"
+  end
+
   create_table "final_girls", force: :cascade do |t|
-    t.bigint "series_id", null: false
     t.string "name"
     t.string "slug"
     t.datetime "created_at", precision: nil, null: false
@@ -95,6 +103,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_213202) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
+  create_table "user_final_girls", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "final_girl_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["final_girl_id"], name: "index_user_final_girls_on_final_girl_id"
+    t.index ["user_id"], name: "index_user_final_girls_on_user_id"
+  end
+
   create_table "user_killer_achievements", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "killer_achievement_id", null: false
@@ -127,7 +144,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_213202) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id", name: "active_storage_attachments_blob_id_fkey"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id", name: "active_storage_variant_records_blob_id_fkey"
-  add_foreign_key "final_girls", "series", name: "final_girls_series_id_fkey"
   add_foreign_key "killer_achievements", "killers", name: "killer_achievements_killer_id_fkey"
   add_foreign_key "killers", "series", name: "killers_series_id_fkey"
   add_foreign_key "location_achievements", "locations", name: "location_achievements_location_id_fkey"

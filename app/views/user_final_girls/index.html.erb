@@ -1,0 +1,15 @@
+<div class="text-zinc-50 flex flex-row justify-between items-center mb-4 w-full">
+  <h1 class="font-display text-primary text-4xl">My Final Girls</h1>
+  <%= link_to "Add Final Girl", new_user_final_girl_path, class: "button" %>
+</div>
+<table class="table-auto border-collapse min-w-full text-white">
+  <thead class="hidden sm:table-header-group">
+    <tr>
+      <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Final Girl</th>
+      <th class="text-center py-3 px-4 uppercase font-semibold text-sm"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "user_final_girl", collection: @facade.collection %>
+  </tbody>
+</table>

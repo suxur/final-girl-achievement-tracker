@@ -3,10 +3,12 @@
 require "test_helper"
 
 class MenuItemComponentTest < ViewComponent::TestCase
-  def test_component_renders_something_useful
-    # assert_equal(
-    #   %(<span>Hello, components!</span>),
-    #   render_inline(MenuItemComponent.new(message: "Hello, components!")).css("span").to_html
-    # )
+  def setup
+    @component = MenuItemComponent.new(menu_item: {name: "Home", path: "/"})
+  end
+
+  def test_component_renders
+    render_inline @component
+    assert_selector "a", text: "Home"
   end
 end

@@ -1,15 +1,12 @@
 require "test_helper"
 
 class FinalGirlTest < ActiveSupport::TestCase
-  def setup
-    @final_girl = final_girls(:one)
-  end
-
   context "associations" do
-    should belong_to :series
+    should have_one :series
+    should have_one :user_final_girl
   end
 
-  def test_to_param
-    assert_equal @final_girl.slug, @final_girl.to_param
+  context "validations" do
+    should validate_presence_of :name
   end
 end

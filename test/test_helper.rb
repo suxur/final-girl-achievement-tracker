@@ -1,4 +1,5 @@
 ENV["RAILS_ENV"] ||= "test"
+require_relative "simplecov" if ENV["COVERAGE"]
 require_relative "../config/environment"
 require "rails/test_help"
 
@@ -18,20 +19,18 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   def assert_permit(user, record, action)
-    msg =
-      "User #{user.inspect} should be permitted to #{action} #{record}, but isn't permitted"
+    msg = "User #{user.inspect} should be permitted to #{action} #{record}, but isn't permitted"
     assert permit(user, record, action), msg
   end
 
   def refute_permit(user, record, action)
-    msg =
-      "User #{user.inspect} should NOT be permitted to #{action} #{record}, but is permitted"
+    msg = "User #{user.inspect} should NOT be permitted to #{action} #{record}, but is permitted"
     refute permit(user, record, action), msg
   end
 
   def permit(user, record, action)
-    cls = self.class.to_s.gsub(/Test/, "")
-    cls.constantize.new(user, record).public_send("#{action.to_s}?")
+    cls = self.class.to_s.gsub("Test", "")
+    cls.constantize.new(user, record).public_send("#{action}?")
   end
 end
 

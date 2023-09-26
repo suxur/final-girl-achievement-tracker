@@ -1,17 +1,17 @@
-<%= form_with model: play, class: "contents" do |form| %>
-  <%= form.errors play %>
+<%= form_with model: facade.model, class: "contents" do |form| %>
+  <%= form.errors facade.model %>
   <div class="flex flex-col">
     <div class="mb-4">
       <%= form.label :final_girl_id, "Final Girl" %>
-      <%= form.collection_select :final_girl_id, FinalGirl.all, :id, :name, { prompt: "Select a Final Girl" }, class: "w-full mt-1", required: true  %>
+      <%= form.grouped_collection_select :final_girl_id, facade.grouped_final_girl_options, :last, :first, :last, :first, { prompt: "Select a Final Girl" }, class: "w-full mt-1", required: true %>
     </div>
     <div class="mb-4">
       <%= form.label :killer_id, class: "mb-2" %>
-      <%= form.collection_select :killer_id, Killer.all, :id, :name, { prompt: "Select a Killer" }, class: "w-full mt-1", required: true  %>
+      <%= form.grouped_collection_select :killer_id, facade.series, :ordered_killers, :name, :id, :name, { prompt: "Select a Killer"}, include_blank: true, class: "w-full mt-1" %>
     </div>
     <div class="mb-4">
       <%= form.label :location_id, class: "mb-2" %>
-      <%= form.collection_select :location_id, Location.all, :id, :name, { prompt: "Select a Location" }, class: "w-full mt-1", required: true  %>
+      <%= form.grouped_collection_select :location_id, facade.series, :ordered_locations, :name, :id, :name, { prompt: "Select a Location"}, include_blank: true, class: "w-full mt-1" %>
     </div>
     <div class="mb-4">
       <%= form.label :created_at, "Play Date", class: "mb-2" %>

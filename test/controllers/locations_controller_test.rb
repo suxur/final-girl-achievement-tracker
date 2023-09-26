@@ -45,6 +45,14 @@ class LocationsControllerTest < IntegrationTest
     assert_redirected_to locations_url
   end
 
+  test "should render new if location is invalid" do
+    sign_in_admin
+    assert_no_difference("Location.count") do
+      post locations_url, params: {location: {name: ""}}
+    end
+    assert_response :unprocessable_entity
+  end
+
   test "a user should not get edit" do
     sign_in_user
     get edit_location_url(@location)

@@ -6,6 +6,13 @@ class Chooseable::KillersTest < ActiveSupport::TestCase
   end
 
   test "items an array of ids and names" do
+    assert_equal(
+      [
+        [killers(:one).name, killers(:one).id],
+        [killers(:two).name, killers(:two).id]
+      ],
+      @chooseable.items
+    )
   end
 
   test "it returns the correct id" do

@@ -12,6 +12,10 @@ class LocationTest < ActiveSupport::TestCase
     should have_one_attached :icon
   end
 
+  context "validations" do
+    should validate_presence_of :name
+  end
+
   def test_to_param
     assert_equal @location.slug, @location.to_param
   end
