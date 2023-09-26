@@ -9,9 +9,7 @@ class UserFinalGirlsController < AuthController
 
   def create
     @facade = UserFinalGirl::NewFacade.new current_user, params, strong_params: strong_params
-    current_user.user_final_girls.new(final_girl: @facade.model)
-
-    if current_user.save
+    if @facade.model.save
       redirect_to user_final_girls_url, notice: "Final Girl was successfully created."
     else
       render :new, status: :unprocessable_entity
